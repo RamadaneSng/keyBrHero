@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Keyboard from "@/components/Keyboard";
+import { azerty, qwerty } from "@/config";
 import { BsFillKeyboardFill } from "react-icons/bs";
 import {
   MdOutlineRestartAlt,
@@ -47,7 +48,7 @@ export default function Home() {
           <MdOutlineRestartAlt size="1.7rem" />
         </div>
       </div>
-      <Keyboard />
+      <Keyboard keyBoardData={qwerty[0]} />
     </main>
   );
 }
