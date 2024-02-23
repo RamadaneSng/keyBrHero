@@ -66,8 +66,8 @@
   }
 }
 
-.time-option {
-  @apply cursor-pointer p-2 rounded-md text-xl font-bold hover:underline;
+.option {
+  @apply cursor-pointer py-2 px-1 rounded-md text-[1rem] font-bold hover:underline;
 }
 
 .qwerty {

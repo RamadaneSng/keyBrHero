@@ -18,12 +18,12 @@ interface KeyboardProps {
 
 const Keyboard = ({ keyBoardData }: KeyboardProps) => {
   return (
-    <div className="flex justify-center">
-      <div className="border-[12px] rounded-2xl">
+    <div className="flex justify-center mt-16">
+      <div className="border-[12px] rounded-xl">
         <ul className="flex justify-between">
-          {keyBoardData.firstRow.map((key) => (
+          {keyBoardData.firstRow.map((key, index) => (
             <li
-              key={key.firstKey}
+              key={index}
               className={cn(
                 "w-[38px] h-9 bg-white flex flex-col m-[1px] mt-0 justify-center pl-[10px] text-xs relative",
                 key.firstKey === "Backspace" &&
@@ -45,9 +45,9 @@ const Keyboard = ({ keyBoardData }: KeyboardProps) => {
           ))}
         </ul>
         <ul className="flex justify-between">
-          {keyBoardData.secondRow.map((key) => (
+          {keyBoardData.secondRow.map((key, index) => (
             <li
-              key={key.firstKey}
+              key={index}
               className={cn(
                 "w-[38px] h-9 bg-white flex flex-col m-[1px] justify-center pl-[10px] text-xs relative",
                 key.firstKey === "Tab" && "w-[58px] ml-0",
@@ -68,9 +68,9 @@ const Keyboard = ({ keyBoardData }: KeyboardProps) => {
           ))}
         </ul>
         <ul className="flex justify-between">
-          {keyBoardData.thirdRow.map((key) => (
+          {keyBoardData.thirdRow.map((key, index) => (
             <li
-              key={key.firstKey}
+              key={index}
               className={cn(
                 "w-[38px] h-9 bg-white flex flex-col m-[1px] justify-center pl-[10px] text-[10px] relative",
                 key.firstKey === "Caps Lock" &&
@@ -93,7 +93,7 @@ const Keyboard = ({ keyBoardData }: KeyboardProps) => {
           ))}
         </ul>
         <ul className="flex justify-between">
-          {keyBoardData.fourthRow.map((key) => (
+          {keyBoardData.fourthRow.map((key, index) => (
             <li
               key={key.firstKey}
               className={cn(
