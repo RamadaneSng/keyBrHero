@@ -4,7 +4,7 @@ import Keyboard from "@/components/Keyboard";
 import Option from "@/components/Option";
 import TypingText from "@/components/TypingText";
 import { qwerty } from "@/config";
-import { useClient } from "@/hook/useClient";
+
 
 export default function Home() {
 

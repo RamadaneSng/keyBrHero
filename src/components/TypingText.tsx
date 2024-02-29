@@ -61,7 +61,7 @@ const TypingText = () => {
         {isClient &&
           characters.map((el, index) => (
             <span
-              // suppressHydrationWarning
+            
               key={index}
               className={cn(
                 " opacity-80",
