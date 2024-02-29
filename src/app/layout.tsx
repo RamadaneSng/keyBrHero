@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" >
       <body className=" font-mono h-full bg-blueDolphin-main">
         {children}
       </body>

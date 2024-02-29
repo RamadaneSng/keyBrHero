@@ -1,5 +1,5 @@
-import typingText from "@/config/typinTexts";
-import { useEffect, useState } from "react";
+import { createText } from "@/lib/utils";
+import { useState } from "react";
 
 export const useUserInput = () => {
   const [currentTextIndex, setCurrentTextIndex] =
@@ -8,50 +8,55 @@ export const useUserInput = () => {
   const [activeTest, setActiveTest] = useState<
     true | false
   >(false);
-  const letters = [];
-  // const [letters, setLetters] = useState();
-
-  const updateIndex = () => {
-    const index = Math.floor(
-      Math.random() * typingText.length
-    );
-    console.log(index);
-
-    setCurrentTextIndex(index);
-
-    setActiveTest(false);
-  };
-
-  const sentence = typingText.filter(
-    (el) => el.id === currentTextIndex
+  const [isTyped, setIsTyped] = useState<true | false>(
+    false
   );
-  for (let i = 0; i < sentence[0]?.text.length; i++) {
-    letters.push(sentence[0].text[i]);
-  }
+
+  const [letters, setLetters] = useState<string>(
+    createText()
+  );
+
+  const updateText = () => {
+    setLetters(createText());
+  };
 
   const handleActiveTest = () => {
     setActiveTest(true);
   };
 
-  useEffect(() => {
-    updateIndex();
+  let i = 0;
+  const handleKeyDown = (e: KeyboardEvent) => {
+    //  if (e.key === letters[i]) {
+    //    setKeyTyped(e);
+    //    i++;
+    //    if (i === letters.length) {
+    //      console.log(
+    //        "Toutes les lettres ont été correctement tapées !"
+    //      );
+    //      i = 0;
+    //    }
+    //  } else {
+    //    console.log(`Incorrect: ${e.key} at position ${i}`);
+    //    i++;
+    //  }
+    // console.log(letters);
+  };
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      setKeyTyped(e);
-    };
+  // useEffect(() => {
+  // window.addEventListener("keydown", handleKeyDown);
 
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  // return () => {
+  //   window.removeEventListener("keydown", handleKeyDown);
+  // };
+  // }, []);
 
   return {
     letters,
-    updateIndex,
+    isTyped,
     keytyped,
     activeTest,
+
+    updateText,
     handleActiveTest,
   };
 };

@@ -4,8 +4,10 @@ import Keyboard from "@/components/Keyboard";
 import Option from "@/components/Option";
 import TypingText from "@/components/TypingText";
 import { qwerty } from "@/config";
+import { useClient } from "@/hook/useClient";
 
 export default function Home() {
+
   return (
     <main className=" max-w-screen-lg mx-auto">
       <Header />
@@ -17,3 +19,12 @@ export default function Home() {
     </main>
   );
 }
+
+const Spinner = () => {
+  return (
+    <svg
+      className="animate-spin h-5 w-5 mr-3 bg-white"
+      viewBox="0 0 24 24"
+    ></svg>
+  );
+};
