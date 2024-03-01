@@ -6,7 +6,8 @@ export const useKeydown = (letters: string[]) => {
   let i = 0;
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === letters[i]) {
-      setKeyTyped(e);
+      // setKeyTyped(e);
+      console.log(`correct: ${e.key} at position ${i}`);
       i++;
       if (i === letters.length) {
         console.log(

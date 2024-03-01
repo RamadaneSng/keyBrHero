@@ -13,7 +13,9 @@ const TypingText = () => {
     letters,
     activeTest,
     isTyped,
+    keytyped,
     updateText,
+    letterIndex,
     handleActiveTest,
   } = useUserInput();
 
@@ -25,11 +27,22 @@ const TypingText = () => {
 
   if (!isClient) {
     return (
-      <span className="flex justify-center">
-        <Icons.spinner className="text-white h-9 w-9" />
-      </span>
+      <div className="absolute top-1/2 left-1/2">
+        <Icons.spinner className="text-white h-full w-9" />
+      </div>
     );
   }
+
+  const check = (el: string) => {
+    if (isTyped && characters[letterIndex] === el) {
+      return true;
+    }
+
+    return false;
+  };
+
+console.log(letterIndex);
+
 
   return (
     <div>
@@ -61,11 +74,11 @@ const TypingText = () => {
         {isClient &&
           characters.map((el, index) => (
             <span
-            
               key={index}
               className={cn(
                 " opacity-80",
-                !activeTest && "blur-md"
+                !activeTest && "blur-md",
+                check(el) && "text-white"
               )}
             >
               {el.toLowerCase()}
