@@ -3,46 +3,58 @@
 import { useClient } from "@/hook/useClient";
 import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
-import { useMemo } from "react";
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { PiCursorFill } from "react-icons/pi";
-import { Icons } from "./Icons";
+
+interface LettersType {
+  index: number;
+  letter: string;
+}
 
 const TypingText = () => {
   const {
-    letters,
+    words,
     activeTest,
-    isTyped,
+    typingData,
     keytyped,
     updateText,
     letterIndex,
     handleActiveTest,
   } = useUserInput();
 
-  const characters = useMemo(() => {
-    return letters.split("");
-  }, [letters]);
+  const letters: LettersType[] = [];
+
+  for (let i = 0; i < words.length; i++) {
+    letters.push({ index: i, letter: words[i] });
+  }
 
   const isClient = useClient();
 
-  if (!isClient) {
-    return (
-      <div className="absolute top-1/2 left-1/2">
-        <Icons.spinner className="text-white h-full w-9" />
-      </div>
-    );
-  }
-
-  const check = (el: string) => {
-    if (isTyped && characters[letterIndex] === el) {
+  // if (!isClient) {
+  //   return (
+  //     <div className="absolute top-1/2 left-1/2">
+  //       <Icons.spinner className="text-white h-full w-9" />
+  //     </div>
+  //   );
+  // }
+  let i = 0;
+  const check = (el: number) => {
+    if (
+      // letterIndex === el &&
+      // keytyped?.key === letters[el].letter
+      // isTyped[el]?.bool === el
+      isTyped[el]?.bool === true
+    ) {
       return true;
+    } else if (
+      !isTyped[el]?.bool &&
+      isTyped[el]?.index === i
+    ) {
+      return false;
     }
-
-    return false;
   };
 
-console.log(letterIndex);
-
+  // console.log(isTyped);
 
   return (
     <div>
@@ -72,18 +84,39 @@ console.log(letterIndex);
           </div>
         )}
         {isClient &&
-          characters.map((el, index) => (
-            <span
-              key={index}
-              className={cn(
-                " opacity-80",
-                !activeTest && "blur-md",
-                check(el) && "text-white"
-              )}
-            >
-              {el.toLowerCase()}
-            </span>
-          ))}
+          letters.map((el, index) => {
+            return (
+              <span
+                key={index}
+                // style={{
+                //   color:
+                //     isTyped[letterIndex]?.index ===
+                //       el.index && isTyped[letterIndex]?.bool
+                //       ? "#ffffff"
+                //       : ,
+                // }}
+                // style={{
+                //   color: check(el.index) && "#ffffff"
+                // }}
+                className={cn(
+                  "opacity-80 text-blueDolphin-primary",
+                  !activeTest && "blur-md",
+                  typingData[el.index]?.isTyped &&
+                    "text-white",
+                  typingData[el.index]?.isTyped === false &&
+                    "text-red-500"
+                )}
+              >
+                {el.letter.toLowerCase()}
+              </span>
+              // <Letter
+              //   letter={el}
+              //   key={index}
+              //   letterIndex={letterIndex}
+              //   typed={check(el.index)}
+              // />
+            );
+          })}
       </div>
       <div
         className="flex justify-center mt-11"
