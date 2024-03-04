@@ -7,7 +7,11 @@ export const useUserInput = () => {
     true | false
   >(false);
   const [typingData, setTypingData] = useState<{
-    [key: number]: { isTyped: boolean; letter: string };
+    [key: number]: {
+      isTyped: boolean;
+      isSpace: boolean;
+      letter: string;
+    };
   }>({});
 
   const [letterIndex, setLetterIndex] = useState<number>(0);
@@ -32,6 +36,7 @@ export const useUserInput = () => {
           ...typingData,
           [letterIndex]: {
             isTyped: e.key === words[letterIndex],
+            isSpace: words[letterIndex] === " ",
             letter: e.key,
           },
         };

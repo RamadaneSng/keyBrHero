@@ -26,6 +26,7 @@ const Keyboard = ({ keyBoardData }: KeyboardProps) => {
     return (
       <div className="flex justify-center mt-16">
         <div className="border-[12px] rounded-xl">
+          {/* TO DO: add dots on F anf J  */}
           <ul className="flex justify-between">
             {keyBoardData.firstRow.map((key, index) => (
               <li

@@ -37,24 +37,20 @@ const TypingText = () => {
   //     </div>
   //   );
   // }
-  let i = 0;
+  // let i = 0;
   const check = (el: number) => {
-    if (
-      // letterIndex === el &&
-      // keytyped?.key === letters[el].letter
-      // isTyped[el]?.bool === el
-      isTyped[el]?.bool === true
-    ) {
-      return true;
+    if (typingData[el]?.isTyped === true) {
+      return "correct";
     } else if (
-      !isTyped[el]?.bool &&
-      isTyped[el]?.index === i
+      typingData[el]?.isTyped === false &&
+      typingData[el].isSpace === true
     ) {
-      return false;
+      return "Enter incorrect";
+    } else if (typingData[el]?.isTyped === false) {
+      return "incorrect";
     }
   };
-
-  // console.log(isTyped);
+  // console.log(letterIndex);
 
   return (
     <div>
@@ -62,8 +58,9 @@ const TypingText = () => {
         className="
       text-xl
       lg:text-2xl
-      text-justify
       list-none
+      break-words
+     break-all
       text-blueDolphin-primary
       relative
      mt-20
@@ -86,38 +83,33 @@ const TypingText = () => {
         {isClient &&
           letters.map((el, index) => {
             return (
-              <span
-                key={index}
-                // style={{
-                //   color:
-                //     isTyped[letterIndex]?.index ===
-                //       el.index && isTyped[letterIndex]?.bool
-                //       ? "#ffffff"
-                //       : ,
-                // }}
-                // style={{
-                //   color: check(el.index) && "#ffffff"
-                // }}
-                className={cn(
-                  "opacity-80 text-blueDolphin-primary",
-                  !activeTest && "blur-md",
-                  typingData[el.index]?.isTyped &&
-                    "text-white",
-                  typingData[el.index]?.isTyped === false &&
-                    "text-red-500"
-                )}
-              >
-                {el.letter.toLowerCase()}
-              </span>
-              // <Letter
-              //   letter={el}
-              //   key={index}
-              //   letterIndex={letterIndex}
-              //   typed={check(el.index)}
-              // />
+              <div key={index} className="inline">
+                <span
+                  className={cn(
+                    "inline-block",
+                    letterIndex === el.index &&
+                      "w-[2px] h-5 bg-red-100 before:inline-block animate-cursor-bip"
+                  )}
+                ></span>
+                <span
+                  className={cn(
+                    "opacity-80 ",
+                    !activeTest && "blur-md",
+                    check(el.index) === "correct" &&
+                      "text-white",
+                    check(el.index) === "incorrect" &&
+                      "text-red-500",
+                    check(el.index) === "Enter incorrect" &&
+                      "bg-red-500 w-[13px] h-4 inline-flex items-center"
+                  )}
+                >
+                  {el.letter.toLowerCase()}
+                </span>
+              </div>
             );
           })}
       </div>
+      {/* to do active test with enter  */}
       <div
         className="flex justify-center mt-11"
         onClick={() => updateText()}
