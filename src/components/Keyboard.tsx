@@ -110,7 +110,7 @@ const Keyboard = ({ keyBoardData }: KeyboardProps) => {
           <ul className="flex justify-between">
             {keyBoardData.fourthRow.map((key, index) => (
               <li
-                key={key.firstKey}
+                key={index}
                 className={cn(
                   "w-[38px] h-9 bg-white flex flex-col m-[1px] justify-center pl-[10px] text-xs relative",
                   key.firstKey === "Shift" &&

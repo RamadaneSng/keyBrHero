@@ -16,9 +16,10 @@ const TypingText = () => {
     words,
     activeTest,
     typingData,
+    letterIndex,
     keytyped,
     updateText,
-    letterIndex,
+    // eraseLetter,
     handleActiveTest,
   } = useUserInput();
 
@@ -29,6 +30,13 @@ const TypingText = () => {
   }
 
   const isClient = useClient();
+
+  // if (keytyped?.key === "Backspace") {
+  //   eraseLetter();
+  // }
+
+  console.log(keytyped?.key);
+  
 
   // if (!isClient) {
   //   return (
@@ -83,17 +91,18 @@ const TypingText = () => {
         {isClient &&
           letters.map((el, index) => {
             return (
-              <div key={index} className="inline">
+              <div key={index} className="inline relative">
                 <span
                   className={cn(
                     "inline-block",
                     letterIndex === el.index &&
-                      "w-[2px] h-5 bg-red-100 before:inline-block animate-cursor-bip"
+                      "absolute w-[2px] h-7 bg-red-100 before:inline-block animate-[cursor-bip_1.2s_infinite] bottom-0",
+                    !activeTest && "hidden"
                   )}
                 ></span>
                 <span
                   className={cn(
-                    "opacity-80 ",
+                    "opacity-80 z-0",
                     !activeTest && "blur-md",
                     check(el.index) === "correct" &&
                       "text-white",
