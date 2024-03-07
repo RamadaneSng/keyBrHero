@@ -25,6 +25,8 @@ export const useUserInput = () => {
 
   const handleActiveTest = () => {
     setActiveTest(true);
+    setTypingData({});
+    setLetterIndex(0);
   };
 
   // const eraseLetter = () => {
@@ -36,29 +38,28 @@ export const useUserInput = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       setKeyTyped(e);
+      if (letterIndex <= words.length && letterIndex >= 0) {
+        if (e.key !== "Backspace") {
+          const updatedTypingData = {
+            ...typingData,
+            [letterIndex]: {
+              isTyped: e.key === words[letterIndex],
+              isSpace: words[letterIndex] === " ",
+              letter: e.key,
+            },
+          };
 
-      if (e.key === "Backspace" && letterIndex > 0) {
-        setLetterIndex(letterIndex - 1);
-      }
+          setTypingData(updatedTypingData);
 
-      if (
-        letterIndex < words.length &&
-        e.key !== "Backspace"
-      ) {
-        const updatedTypingData = {
-          ...typingData,
-          [letterIndex]: {
-            isTyped: e.key === words[letterIndex],
-            isSpace: words[letterIndex] === " ",
-            letter: e.key,
-          },
-        };
-
-        setTypingData(updatedTypingData);
-
-        setLetterIndex(letterIndex + 1);
+          setLetterIndex(letterIndex + 1);
+        } else {
+          delete typingData[letterIndex - 1];
+          setLetterIndex(letterIndex - 1);
+        }
+        console.log(letterIndex);
       } else {
-        console.log("Test end !");
+        console.log("test end !");
+        setLetterIndex(0);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -75,7 +76,7 @@ export const useUserInput = () => {
     activeTest,
     letterIndex,
     updateText,
-    // eraseLetter,
+    setActiveTest,
     handleActiveTest,
   };
 };

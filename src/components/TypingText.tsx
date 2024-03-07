@@ -3,6 +3,7 @@
 import { useClient } from "@/hook/useClient";
 import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { PiCursorFill } from "react-icons/pi";
 
@@ -19,7 +20,7 @@ const TypingText = () => {
     letterIndex,
     keytyped,
     updateText,
-    // eraseLetter,
+    setActiveTest,
     handleActiveTest,
   } = useUserInput();
 
@@ -31,12 +32,13 @@ const TypingText = () => {
 
   const isClient = useClient();
 
-  // if (keytyped?.key === "Backspace") {
-  //   eraseLetter();
-  // }
+  useEffect(() => {
+    if (keytyped?.key === "Enter") {
+      setActiveTest(true);
+    }
+  }, [keytyped, setActiveTest]);
 
-  console.log(keytyped?.key);
-  
+  console.log(typingData);
 
   // if (!isClient) {
   //   return (
@@ -91,12 +93,17 @@ const TypingText = () => {
         {isClient &&
           letters.map((el, index) => {
             return (
-              <div key={index} className="inline relative">
+              <div
+                key={index}
+                className="inline relative"
+                onFocus={() => console.log("ok")}
+              >
                 <span
+                  aria-hidden
                   className={cn(
                     "inline-block",
                     letterIndex === el.index &&
-                      "absolute w-[2px] h-7 bg-red-100 before:inline-block animate-[cursor-bip_1.2s_infinite] bottom-0",
+                      "absolute w-[2px] h-7 bg-red-100 animate-[cursor-bip_1.2s_infinite] bottom-0",
                     !activeTest && "hidden"
                   )}
                 ></span>

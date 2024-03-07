@@ -12,7 +12,7 @@ export default function Home() {
       <Option />
       <TypingText />
 
-      <Keyboard keyBoardData={qwerty[0]} />
+      {/* <Keyboard keyBoardData={qwerty[0]} /> */}
       <Footer />
     </main>
   );
