@@ -38,7 +38,7 @@ const TypingText = () => {
     }
   }, [keytyped, setActiveTest]);
 
-  console.log(typingData);
+  console.log(keytyped?.key);
 
   // if (!isClient) {
   //   return (

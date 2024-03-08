@@ -1,4 +1,4 @@
-import { createText } from "@/lib/utils";
+import { allowedCharacter, createText } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 export const useUserInput = () => {
@@ -38,28 +38,33 @@ export const useUserInput = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       setKeyTyped(e);
-      if (letterIndex <= words.length && letterIndex >= 0) {
-        if (e.key !== "Backspace") {
-          const updatedTypingData = {
-            ...typingData,
-            [letterIndex]: {
-              isTyped: e.key === words[letterIndex],
-              isSpace: words[letterIndex] === " ",
-              letter: e.key,
-            },
-          };
+      if (allowedCharacter(e.key)) {
+        if (
+          letterIndex <= words.length &&
+          letterIndex >= 0
+        ) {
+          if (e.key !== "Backspace") {
+            const updatedTypingData = {
+              ...typingData,
+              [letterIndex]: {
+                isTyped: e.key === words[letterIndex],
+                isSpace: words[letterIndex] === " ",
+                letter: e.key,
+              },
+            };
 
-          setTypingData(updatedTypingData);
+            setTypingData(updatedTypingData);
 
-          setLetterIndex(letterIndex + 1);
+            setLetterIndex(letterIndex + 1);
+          } else {
+            delete typingData[letterIndex - 1];
+            setLetterIndex(letterIndex - 1);
+          }
+          console.log(letterIndex);
         } else {
-          delete typingData[letterIndex - 1];
-          setLetterIndex(letterIndex - 1);
+          console.log("test end !");
+          setLetterIndex(0);
         }
-        console.log(letterIndex);
-      } else {
-        console.log("test end !");
-        setLetterIndex(0);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
