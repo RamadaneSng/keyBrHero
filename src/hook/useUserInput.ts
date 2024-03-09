@@ -18,16 +18,26 @@ export const useUserInput = () => {
 
   const [words, setWords] = useState<string>(createText());
 
+  // const { startCounter, resetCounter } = useTimer(30);
+
   const updateText = () => {
     setWords(createText());
     setActiveTest(false);
+    // resetCounter();
   };
 
   const handleActiveTest = () => {
     setActiveTest(true);
     setTypingData({});
     setLetterIndex(0);
+    // startCounter();
   };
+
+  useEffect(() => {
+    if (keytyped?.key === "Enter") {
+      setActiveTest(true);
+    }
+  }, [keytyped?.key]);
 
   // const eraseLetter = () => {
   //   if (keytyped?.key === "Backspace")

@@ -2,6 +2,7 @@ import { BsFillKeyboardFill } from "react-icons/bs";
 import { FaInfo } from "react-icons/fa";
 import { MdColorLens } from "react-icons/md";
 import { Icons } from "./Icons";
+import Theme from "./Theme";
 
 const Header = () => {
   return (
@@ -28,6 +29,7 @@ const Header = () => {
           <FaInfo size="1.3rem" />
         </span>
       </div>
+      <Theme />
     </div>
   );
 };

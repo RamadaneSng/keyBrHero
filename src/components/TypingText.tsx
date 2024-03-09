@@ -3,7 +3,7 @@
 import { useClient } from "@/hook/useClient";
 import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
-import { useEffect } from "react";
+import { time } from "console";
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { PiCursorFill } from "react-icons/pi";
 
@@ -20,7 +20,6 @@ const TypingText = () => {
     letterIndex,
     keytyped,
     updateText,
-    setActiveTest,
     handleActiveTest,
   } = useUserInput();
 
@@ -32,13 +31,8 @@ const TypingText = () => {
 
   const isClient = useClient();
 
-  useEffect(() => {
-    if (keytyped?.key === "Enter") {
-      setActiveTest(true);
-    }
-  }, [keytyped, setActiveTest]);
+  // console.log(keytyped?.key);
 
-  console.log(keytyped?.key);
 
   // if (!isClient) {
   //   return (
