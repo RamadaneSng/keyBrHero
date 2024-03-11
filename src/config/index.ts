@@ -212,3 +212,159 @@ export const azerty = [
     ],
   },
 ];
+
+export const themes = [
+  {
+    name: "8080",
+    colors: {
+      main: "#333a45",
+      primary: "#939eae",
+      secondary: "#f44c7f",
+      tertiary: "#2e343d",
+    },
+  },
+  {
+    name: "80s after dark",
+    colors: {
+      main: "#1b1d36",
+      primary: "#99d6ea",
+      secondary: "#fca6d1",
+      tertiary: "#17182c",
+    },
+  },
+  {
+    name: "alduin",
+    colors: {
+      main: "#1c1c1c",
+      primary: "#444444",
+      secondary: "#dfd7af",
+      tertiary: "#242424",
+    },
+  },
+  {
+    name: "arch",
+    colors: {
+      main: "#0c0d11",
+      primary: "#454864",
+      secondary: "#7ebab5",
+      tertiary: "#171a25",
+    },
+  },
+  {
+    name: "aurora",
+    colors: {
+      main: "#011926",
+      primary: "#245c69",
+      secondary: "#00e980",
+      tertiary: "#000c13",
+    },
+  },
+  {
+    name: "bento",
+    colors: {
+      main: "#2d394d",
+      primary: "#4a768d",
+      secondary: "#ff7a90",
+      tertiary: "#263041",
+    },
+  },
+  {
+    name: "bliss",
+    colors: {
+      main: "#262727",
+      primary: "#665957",
+      secondary: "#f0d3c9",
+      tertiary: "#343231",
+    },
+  },
+  {
+    name: "blue dolphin",
+    colors: {
+      main: "#003950",
+      primary: "#00e4ff",
+      secondary: "#ffcefb",
+      tertiary: "#014961",
+    },
+  },
+  {
+    name: "blueberry light",
+    colors: {
+      main: "#dae0f5",
+      primary: "#92a4be",
+      secondary: "#506477",
+      tertiary: "#c1c7df",
+    },
+  },
+  {
+    name: "bouquet",
+    colors: {
+      main: "#173f35",
+      primary: "#408e7b",
+      secondary: "#eaa09c",
+      tertiary: "#1f4e43",
+    },
+  },
+  {
+    name: "copper",
+    colors: {
+      main: "#442f29",
+      primary: "#7ebab5",
+      secondary: "#b46a55",
+      tertiary: "#50362e",
+    },
+  },
+  {
+    name: "copper",
+    colors: {
+      main: "#442f29",
+      primary: "#7ebab5",
+      secondary: "#b46a55",
+      tertiary: "#50362e",
+    },
+  },
+  {
+    name: "cyberspace",
+    colors: {
+      main: "#181c18",
+      primary: "#9578d3",
+      secondary: "#00ce7c",
+      tertiary: "#131613",
+    },
+  },
+  {
+    name: "dark",
+    colors: {
+      main: "#111111",
+      primary: "#444444",
+      secondary: "#eeeeee",
+      tertiary: "#191919",
+    },
+  },
+  {
+    name: "terra",
+    colors: {
+      main: "#0c100e",
+      primary: "#436029",
+      secondary: "#89c559",
+      tertiary: "#0f1d18",
+    },
+  },
+  {
+    colors: "cheesecake",
+    cheesecake: {
+      main: "#fdf0d5",
+      primary: "#d91c81",
+      secondary: "#8e2949",
+      tertiary: "#f3e2bf",
+    },
+  },
+  {
+    name: "frozen",
+    colors: {
+      main: "#9bf2ea",
+      primary: "#b690fd",
+      secondary: "#6d44a6",
+      tertiary: "#7fe7dd",
+    },
+  },
+];
