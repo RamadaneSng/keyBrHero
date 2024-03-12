@@ -2,6 +2,7 @@
 
 // import { useTimer } from "@/hook/useTimer";
 import { useUserInput } from "@/hook/useUserInput";
+import { useThemeStore } from "@/store/ThemeStore";
 import { useState } from "react";
 import { BsFillKeyboardFill } from "react-icons/bs";
 import { MdTimer } from "react-icons/md";
@@ -18,12 +19,18 @@ const Option = () => {
 
   // console.log(counter);
   const counter = 0;
+  const theme = useThemeStore((s) => s.theme);
+
+  console.log(theme);
 
   return (
     <div>
       {" "}
       <div className="flex items-center justify-center gap-2">
-        <div className="flex gap-1 rounded-lg px-4 justify-center items-center bg-blueDolphin-tertiary">
+        <div
+          className={`flex gap-1 rounded-lg px-4 justify-center items-center bg-[${theme.main}]`}
+          // style={{ background: theme.tertiary }}
+        >
           <span>
             <MdTimer size="1.2rem" />
           </span>
@@ -55,7 +62,7 @@ const Option = () => {
           <span className="option text-blueDolphin-secondary">
             Azerty
           </span>
-          <span className="option text-blueDolphin-primary">
+          <span className="option text-blueDolphin-primary hover:text-[#82eaff]">
             Qwerty
           </span>
         </div>

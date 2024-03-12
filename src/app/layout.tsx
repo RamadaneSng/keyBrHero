@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className=" font-mono min-h-full bg-blueDolphin-main">
+      <body className=" font-mono min-h-full bg-main">
         {children}
       </body>
     </html>

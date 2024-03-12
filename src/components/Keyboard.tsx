@@ -1,25 +1,14 @@
 "use client";
 
+import { azerty, qwerty } from "@/config";
 import { useClient } from "@/hook/useClient";
 import { cn } from "@/lib/utils";
 
-type KeyboardValue = {
-  firstKey: string;
-  secondKey?: string;
-  thirdKey?: string;
-  label?: string;
-};
-interface KeyboardProps {
-  keyBoardData: {
-    firstRow: KeyboardValue[];
-    secondRow: KeyboardValue[];
-    thirdRow: KeyboardValue[];
-    fourthRow: KeyboardValue[];
-    fifthRow: KeyboardValue[];
-  };
-}
-
-const Keyboard = ({ keyBoardData }: KeyboardProps) => {
+const Keyboard = ({
+  keyBoardData,
+}: {
+  keyBoardData: (typeof qwerty)[number];
+}) => {
   const isClient = useClient();
 
   if (isClient) {

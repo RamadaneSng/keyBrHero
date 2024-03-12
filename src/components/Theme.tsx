@@ -1,5 +1,7 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { themes } from "@/config";
 import { FaSearch } from "react-icons/fa";
+import ThemeCard from "./ThemeCard";
 
 const Theme = () => {
   return (
@@ -16,8 +18,10 @@ const Theme = () => {
           className=" w-full h-full focus:border-none ring-0 border-0 focus:outline-none py-4"
         />
       </div>
-      <ScrollArea className=" w-full border">
-        jhh
+      <ScrollArea className=" w-full border h-48">
+        {themes.map((theme) => (
+          <ThemeCard key={theme.name} theme={theme} />
+        ))}
       </ScrollArea>
     </div>
   );

@@ -3,6 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    --color-main: #2d394d;
+    --color-primary: #4a768d;
+    --color-secondary: #ff7a90;
+    --color-tertiary: #263041;
+    --color-hover: #fffaf8;
+  }
+
+  @import "../styles/theme.css";
+
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;

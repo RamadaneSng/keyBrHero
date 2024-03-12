@@ -221,6 +221,7 @@ export const themes = [
       primary: "#939eae",
       secondary: "#f44c7f",
       tertiary: "#2e343d",
+      hover: "#e9ecf0",
     },
   },
   {
@@ -230,6 +231,7 @@ export const themes = [
       primary: "#99d6ea",
       secondary: "#fca6d1",
       tertiary: "#17182c",
+      hover: "#e1e7ec",
     },
   },
   {
@@ -239,6 +241,7 @@ export const themes = [
       primary: "#444444",
       secondary: "#dfd7af",
       tertiary: "#242424",
+      hover: "#f5f3ed",
     },
   },
   {
@@ -248,6 +251,7 @@ export const themes = [
       primary: "#454864",
       secondary: "#7ebab5",
       tertiary: "#171a25",
+      hover: "#f6f5f5",
     },
   },
   {
@@ -257,6 +261,7 @@ export const themes = [
       primary: "#245c69",
       secondary: "#00e980",
       tertiary: "#000c13",
+      hover: "#fff",
     },
   },
   {
@@ -266,6 +271,7 @@ export const themes = [
       primary: "#4a768d",
       secondary: "#ff7a90",
       tertiary: "#263041",
+      hover: "#fffaf8",
     },
   },
   {
@@ -275,6 +281,7 @@ export const themes = [
       primary: "#665957",
       secondary: "#f0d3c9",
       tertiary: "#343231",
+      hover: "#fff",
     },
   },
   {
@@ -284,6 +291,7 @@ export const themes = [
       primary: "#00e4ff",
       secondary: "#ffcefb",
       tertiary: "#014961",
+      hover: "#82eaff",
     },
   },
   {
@@ -293,6 +301,7 @@ export const themes = [
       primary: "#92a4be",
       secondary: "#506477",
       tertiary: "#c1c7df",
+      hover: "#678198",
     },
   },
   {
@@ -302,6 +311,7 @@ export const themes = [
       primary: "#408e7b",
       secondary: "#eaa09c",
       tertiary: "#1f4e43",
+      hover: "#e9e0d2",
     },
   },
   {
@@ -311,15 +321,7 @@ export const themes = [
       primary: "#7ebab5",
       secondary: "#b46a55",
       tertiary: "#50362e",
-    },
-  },
-  {
-    name: "copper",
-    colors: {
-      main: "#442f29",
-      primary: "#7ebab5",
-      secondary: "#b46a55",
-      tertiary: "#50362e",
+      hover: "#e7e0de",
     },
   },
   {
@@ -329,6 +331,7 @@ export const themes = [
       primary: "#9578d3",
       secondary: "#00ce7c",
       tertiary: "#131613",
+      hover: "#c2fbe1",
     },
   },
   {
@@ -338,6 +341,7 @@ export const themes = [
       primary: "#444444",
       secondary: "#eeeeee",
       tertiary: "#191919",
+      hover: "#eee",
     },
   },
   {
@@ -347,15 +351,17 @@ export const themes = [
       primary: "#436029",
       secondary: "#89c559",
       tertiary: "#0f1d18",
+      hover: "#f0edd1",
     },
   },
   {
-    colors: "cheesecake",
-    cheesecake: {
+    name: "cheesecake",
+    colors: {
       main: "#fdf0d5",
       primary: "#d91c81",
       secondary: "#8e2949",
       tertiary: "#f3e2bf",
+      hover: "#3a3335",
     },
   },
   {
@@ -365,6 +371,7 @@ export const themes = [
       primary: "#b690fd",
       secondary: "#6d44a6",
       tertiary: "#7fe7dd",
+      hover: "#ffffff",
     },
   },
 ];

@@ -1,3 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+html[data-theme="afterDark"] {
+  --color-main: #1b1d36;
+  --color-primary: #99d6ea;
+  --color-secondary: #fca6d1;
+  --color-tertiary: #17182c;
+  --color-hover: #e1e7ec;
+}
+html[data-theme="alduin"] {
+  --color-main: #1c1c1c;
+  --color-primary: #444444;
+  --color-secondary: #dfd7af;
+  --color-tertiary: #242424;
+  --color-hover: #f5f3ed;
+}
+
