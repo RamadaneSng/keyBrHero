@@ -1,23 +1,3 @@
-export const colorThemes = [
-  { themeName: "8008" },
-  { themeName: "80s after dark" },
-  { themeName: "alduin" },
-  { themeName: "arch" },
-  { themeName: "aurora" },
-  { themeName: "bento" },
-  { themeName: "bliss" },
-  { themeName: "blue dolphin" },
-  { themeName: "frozen llama" },
-  { themeName: "blueberry light" },
-  { themeName: "bouquet" },
-  { themeName: "copper" },
-  { themeName: "cyberspace" },
-  { themeName: "dark" },
-  { themeName: "terra" },
-  { themeName: "cheesecake" },
-  { themeName: "dark" },
-];
-
 export const qwerty = [
   {
     firstRow: [
@@ -216,6 +196,7 @@ export const azerty = [
 export const themes = [
   {
     name: "8080",
+    label: "_8008",
     colors: {
       main: "#333a45",
       primary: "#939eae",
@@ -226,6 +207,7 @@ export const themes = [
   },
   {
     name: "80s after dark",
+    label: "afterDark",
     colors: {
       main: "#1b1d36",
       primary: "#99d6ea",
@@ -236,6 +218,7 @@ export const themes = [
   },
   {
     name: "alduin",
+    label: "alduin",
     colors: {
       main: "#1c1c1c",
       primary: "#444444",
@@ -246,6 +229,7 @@ export const themes = [
   },
   {
     name: "arch",
+    label: "arch",
     colors: {
       main: "#0c0d11",
       primary: "#454864",
@@ -256,6 +240,7 @@ export const themes = [
   },
   {
     name: "aurora",
+    label: "aurora",
     colors: {
       main: "#011926",
       primary: "#245c69",
@@ -266,6 +251,7 @@ export const themes = [
   },
   {
     name: "bento",
+    label: "bento",
     colors: {
       main: "#2d394d",
       primary: "#4a768d",
@@ -276,6 +262,7 @@ export const themes = [
   },
   {
     name: "bliss",
+    label: "bliss",
     colors: {
       main: "#262727",
       primary: "#665957",
@@ -286,6 +273,7 @@ export const themes = [
   },
   {
     name: "blue dolphin",
+    label: "blueDolphin",
     colors: {
       main: "#003950",
       primary: "#00e4ff",
@@ -296,6 +284,7 @@ export const themes = [
   },
   {
     name: "blueberry light",
+    label: "blueberryLight",
     colors: {
       main: "#dae0f5",
       primary: "#92a4be",
@@ -306,6 +295,7 @@ export const themes = [
   },
   {
     name: "bouquet",
+    label: "bouquet",
     colors: {
       main: "#173f35",
       primary: "#408e7b",
@@ -316,6 +306,7 @@ export const themes = [
   },
   {
     name: "copper",
+    label: "copper",
     colors: {
       main: "#442f29",
       primary: "#7ebab5",
@@ -326,6 +317,7 @@ export const themes = [
   },
   {
     name: "cyberspace",
+    label: "cyberspace",
     colors: {
       main: "#181c18",
       primary: "#9578d3",
@@ -336,6 +328,7 @@ export const themes = [
   },
   {
     name: "dark",
+    label: "dark",
     colors: {
       main: "#111111",
       primary: "#444444",
@@ -346,6 +339,7 @@ export const themes = [
   },
   {
     name: "terra",
+    label: "terra",
     colors: {
       main: "#0c100e",
       primary: "#436029",
@@ -356,6 +350,7 @@ export const themes = [
   },
   {
     name: "cheesecake",
+    label: "cheesecake",
     colors: {
       main: "#fdf0d5",
       primary: "#d91c81",
@@ -366,6 +361,7 @@ export const themes = [
   },
   {
     name: "frozen",
+    label: "frozen",
     colors: {
       main: "#9bf2ea",
       primary: "#b690fd",

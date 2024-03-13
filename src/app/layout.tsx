@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/theme.css";
 import "./globals.css";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "KeyBrHero",
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className=" font-mono min-h-full bg-main">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

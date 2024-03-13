@@ -24,6 +24,7 @@ const config = {
         secondary: "var(--color-secondary)",
         tertiary: "var(--color-tertiary)",
         hover: "var(--color-hover)",
+        error: "var(--error)",
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -142,14 +143,14 @@ const config = {
           tertiary: "#7fe7dd",
           hover: "#ffffff",
         },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
+        // primary: {
+        //   DEFAULT: "hsl(var(--primary))",
+        //   foreground: "hsl(var(--primary-foreground))",
+        // },
+        // secondary: {
+        //   DEFAULT: "hsl(var(--secondary))",
+        //   foreground: "hsl(var(--secondary-foreground))",
+        // },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -315,7 +316,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-scrollbar"),
+  ],
 } satisfies Config;
 
 export default config;

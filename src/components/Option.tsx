@@ -2,7 +2,6 @@
 
 // import { useTimer } from "@/hook/useTimer";
 import { useUserInput } from "@/hook/useUserInput";
-import { useThemeStore } from "@/store/ThemeStore";
 import { useState } from "react";
 import { BsFillKeyboardFill } from "react-icons/bs";
 import { MdTimer } from "react-icons/md";
@@ -19,20 +18,19 @@ const Option = () => {
 
   // console.log(counter);
   const counter = 0;
-  const theme = useThemeStore((s) => s.theme);
+  // const theme = useThemeStore((s) => s.theme);
 
-  console.log(theme);
+  // console.log(theme);
 
   return (
     <div>
-      {" "}
       <div className="flex items-center justify-center gap-2">
-        <div
-          className={`flex gap-1 rounded-lg px-4 justify-center items-center bg-[${theme.main}]`}
-          // style={{ background: theme.tertiary }}
-        >
+        <div className="flex gap-1 rounded-lg px-4 justify-center items-center bg-tertiary">
           <span>
-            <MdTimer size="1.2rem" />
+            <MdTimer
+              size="1.2rem"
+              className="text-secondary"
+            />
           </span>
           <span
             className="option"
@@ -53,11 +51,14 @@ const Option = () => {
             60s
           </span>
           <div
-            className="w-1 h-6 bg-blueDolphin-main block rounded-sm mx-2"
+            className="w-1 h-6 bg-main block rounded-sm mx-2"
             aria-hidden="true"
           ></div>
           <span>
-            <BsFillKeyboardFill size="1.2rem" />
+            <BsFillKeyboardFill
+              size="1.2rem"
+              className="text-secondary"
+            />
           </span>
           <span className="option text-blueDolphin-secondary">
             Azerty
@@ -68,7 +69,7 @@ const Option = () => {
         </div>
       </div>
       <div className="flex justify-end">
-        <span className="bg-blueDolphin-tertiary py-2 px-3 rounded-lg  text-lg lg:text-xl">
+        <span className="bg-tertiary py-2 px-3 rounded-lg  text-lg lg:text-xl text-primary">
           {counter < 10 ? `0${counter}` : counter}:
           {chosenTime}
         </span>

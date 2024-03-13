@@ -3,7 +3,6 @@
 import { useClient } from "@/hook/useClient";
 import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
-import { time } from "console";
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { PiCursorFill } from "react-icons/pi";
 
@@ -32,7 +31,6 @@ const TypingText = () => {
   const isClient = useClient();
 
   // console.log(keytyped?.key);
-
 
   // if (!isClient) {
   //   return (
@@ -65,19 +63,19 @@ const TypingText = () => {
       list-none
       break-words
      break-all
-      text-blueDolphin-primary
+      text-primary
       relative
      mt-20
       "
       >
         {!activeTest && (
-          <div className="flex items-center justify-center gap-2  cursor-pointer absolute top-1/2 translate-y-[-50%] z-10 left-1/2 translate-x-[-50%]">
+          <div className="flex items-center justify-center gap-2  cursor-pointer absolute top-1/2 translate-y-[-50%] z-10 left-1/2 translate-x-[-50%] text-hover">
             <span>
               <PiCursorFill size="1.2rem" />
             </span>
 
             <p
-              className="text-lg"
+              className="text-lg "
               onClick={handleActiveTest}
             >
               Cliquez ou appuyez sur Entrée pour activer
@@ -106,11 +104,11 @@ const TypingText = () => {
                     "opacity-80 z-0",
                     !activeTest && "blur-md",
                     check(el.index) === "correct" &&
-                      "text-white",
+                      "text-hover",
                     check(el.index) === "incorrect" &&
-                      "text-red-500",
+                      "text-error",
                     check(el.index) === "Enter incorrect" &&
-                      "bg-red-500 w-[13px] h-4 inline-flex items-center"
+                      "bg-error w-[13px] h-4 inline-flex items-center"
                   )}
                 >
                   {el.letter.toLowerCase()}
@@ -124,7 +122,7 @@ const TypingText = () => {
         className="flex justify-center mt-11"
         onClick={() => updateText()}
       >
-        <div className="cursor-pointer hover:bg-blueDolphin-tertiary p-3 rounded-full hover:rotate-180 duration-100 ease-out delay-200">
+        <div className="cursor-pointer hover:bg-tertiary hover:text-hover text-primary p-3 rounded-full hover:rotate-180 duration-100 ease-out delay-200">
           <MdOutlineRestartAlt size="1.7rem" />
         </div>
       </div>

@@ -9,23 +9,26 @@ const Header = () => {
     <div className=" flex items-center justify-between py-8">
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-2">
-          <Icons.logo className="h-12 w-12" />
-          <span className=" text-2xl font-bold lg:text-3xl hover:underline cursor-pointer">
+          <Icons.logo className="h-12 w-12 text-secondary" />
+          <span className="text-2xl font-bold lg:text-3xl hover:underline cursor-pointer text-hover">
             KeyBrHero.
           </span>
         </div>
         <span className="cursor-pointer">
-          <BsFillKeyboardFill size="2rem" />
+          <BsFillKeyboardFill
+            size="2rem"
+            className="text-primary hover:text-hover"
+          />
         </span>
       </div>
       <div className="flex items-center gap-5 ">
-        <div className="flex items-center gap-1 cursor-pointer text-xl">
+        <div className="flex items-center gap-1 cursor-pointer text-xl text-primary hover:text-hover">
           <span>
             <MdColorLens />
           </span>
           <p>{8008}</p>
         </div>
-        <span className="cursor-pointer">
+        <span className="cursor-pointer text-primary hover:text-hover">
           <FaInfo size="1.3rem" />
         </span>
       </div>

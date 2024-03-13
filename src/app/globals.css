@@ -13,10 +13,10 @@
 
   @import "../styles/theme.css";
 
-
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
+    --error: #da3333;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -78,12 +78,20 @@
 }
 
 .option {
-  @apply cursor-pointer py-2 px-1 rounded-md text-[1rem] font-bold hover:underline;
+  @apply cursor-pointer py-2 px-1 rounded-md text-[1em] font-semibold text-primary;
 }
 
 .qwerty {
   display: grid;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  /* background-color: black; */
+
+  width: 12px; /* Couleur de la piste de la scrollbar */
+  color: white;
+}
+
 /* @layer base {
   * {
     @apply border-border;
