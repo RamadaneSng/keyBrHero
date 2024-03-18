@@ -18,8 +18,8 @@ const ThemeCard = ({
   const [ref, hovering] = useHover();
   const setIsOpen = useThemeStore((s) => s.setIsOpen);
 
-  const [activedTheme, setActivedTheme] =
-    useLocalStorage<string>("");
+  const [activedTheme = "", setActivedTheme] =
+    useLocalStorage("");
 
   const { theme, setTheme } = useTheme();
 
