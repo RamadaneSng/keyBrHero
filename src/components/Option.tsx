@@ -60,12 +60,8 @@ const Option = () => {
               className="text-secondary"
             />
           </span>
-          <span className="option text-blueDolphin-secondary">
-            Azerty
-          </span>
-          <span className="option text-blueDolphin-primary hover:text-[#82eaff]">
-            Qwerty
-          </span>
+          <span className="option">Azerty</span>
+          <span className="option">Qwerty</span>
         </div>
       </div>
       <div className="flex justify-end">

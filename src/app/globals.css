@@ -85,13 +85,6 @@
   display: grid;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  /* background-color: black; */
-
-  width: 12px; /* Couleur de la piste de la scrollbar */
-  color: white;
-}
-
 /* @layer base {
   * {
     @apply border-border;
