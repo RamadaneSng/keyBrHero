@@ -1,18 +1,25 @@
 "use client";
 
+import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
-// import { useTimer } from "@/hook/useTimer";
+import { useTestStore } from "@/store/TestStore";
 import { useEffect, useState } from "react";
 import { BsFillKeyboardFill } from "react-icons/bs";
 import { MdTimer } from "react-icons/md";
+import { useCountdown } from "usehooks-ts";
 
 const Option = () => {
   const [chosenTime, setChosenTime] = useState(30);
   const [keyboard, setKeyboard] = useState("azerty");
 
+  const { resetTest } = useUserInput();
+  const isActiveTest = useTestStore((s) => s.isActiveTest);
+
+  // console.log(isActiveTest);
+
   const handleChosenTime = (time: number) => {
     setChosenTime(time);
-
+    resetTest();
     localStorage.setItem("chosenTime", time.toString());
   };
 
@@ -21,14 +28,29 @@ const Option = () => {
     localStorage.setItem("keyboard", keyboard);
   };
 
+  const [
+    count,
+    { startCountdown, stopCountdown, resetCountdown },
+  ] = useCountdown({
+    countStart: chosenTime,
+    intervalMs: 1000,
+  });
+
   useEffect(() => {
     const time = localStorage.getItem("chosenTime");
     const keyboard = localStorage.getItem("keyboard");
 
     if (keyboard) setKeyboard(keyboard);
 
-    if (time) setChosenTime(parseInt(time));
-  }, []);
+    if (time) {
+      setChosenTime(parseInt(time));
+    }
+    if (isActiveTest) {
+      startCountdown();
+    } else {
+      resetCountdown();
+    }
+  }, [isActiveTest, startCountdown, resetCountdown]);
 
   return (
     <div>
@@ -97,10 +119,15 @@ const Option = () => {
           </span>
         </div>
       </div>
-      <div className="flex justify-end">
-        <span className="bg-tertiary py-2 px-3 rounded-lg  text-lg lg:text-xl text-primary">
-          {/* {counter < 10 ? `0${counter}` : counter}: */}
-          {chosenTime}
+      <div
+        className="flex justify-end"
+        onClick={() => resetTest()}
+      >
+        <span
+          className="bg-tertiary py-2 px-3 rounded-lg  text-lg lg:text-xl text-primary"
+          suppressHydrationWarning
+        >
+          00:{count < 10 ? `0${count}` : count}
         </span>
       </div>
     </div>

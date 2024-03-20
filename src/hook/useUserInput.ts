@@ -1,49 +1,37 @@
 import { allowedCharacter, createText } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import { useTestStore } from "@/store/TestStore";
+import { useCallback, useEffect } from "react";
 
 export const useUserInput = () => {
-  const [keytyped, setKeyTyped] = useState<KeyboardEvent>();
-  const [activeTest, setActiveTest] = useState<
-    true | false
-  >(false);
-  const [typingData, setTypingData] = useState<{
-    [key: number]: {
-      isTyped: boolean;
-      isSpace: boolean;
-      letter: string;
-    };
-  }>({});
+  const {
+    setIsActiveTest,
+    words,
+    setWords,
+    typingData,
+    setTypingData,
+    letterIndex,
+    setLetterIndex,
+    keyTyped,
+    setKeyTyped,
+  } = useTestStore();
 
-  const [letterIndex, setLetterIndex] = useState<number>(0);
-
-  const [words, setWords] = useState<string>(createText());
-
-  // const { startCounter, resetCounter } = useTimer(30);
-
-  const updateText = () => {
+  const resetTest = useCallback(() => {
     setWords(createText());
-    setActiveTest(false);
-    // resetCounter();
-  };
+    setIsActiveTest(false);
+    setTypingData({});
+  }, [setWords, setIsActiveTest, setTypingData]);
 
-  const handleActiveTest = () => {
-    setActiveTest(true);
+  const handleActiveTest = useCallback(() => {
     setTypingData({});
     setLetterIndex(0);
-    // startCounter();
-  };
+    setIsActiveTest(true);
+  }, [setTypingData, setLetterIndex, setIsActiveTest]);
 
   useEffect(() => {
-    if (keytyped?.key === "Enter") {
-      setActiveTest(true);
+    if (keyTyped?.key === "Enter") {
+      handleActiveTest();
     }
-  }, [keytyped?.key]);
-
-  // const eraseLetter = () => {
-  //   if (keytyped?.key === "Backspace")
-  //     setLetterIndex(letterIndex - 1);
-  // };
-  // eraseLetter();
+  }, [keyTyped?.key, handleActiveTest]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -77,21 +65,27 @@ export const useUserInput = () => {
         }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [words, typingData, letterIndex]);
+  }, [
+    words,
+    typingData,
+    letterIndex,
+    setLetterIndex,
+    setTypingData,
+    setKeyTyped,
+  ]);
 
   return {
     words,
     typingData,
-    keytyped,
-    activeTest,
+    keyTyped,
     letterIndex,
-    updateText,
-    setActiveTest,
+    resetTest,
     handleActiveTest,
   };
 };

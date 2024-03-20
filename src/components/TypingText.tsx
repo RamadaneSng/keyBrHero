@@ -3,6 +3,7 @@
 import { useClient } from "@/hook/useClient";
 import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
+import { useTestStore } from "@/store/TestStore";
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { PiCursorFill } from "react-icons/pi";
 
@@ -14,11 +15,9 @@ interface LettersType {
 const TypingText = () => {
   const {
     words,
-    activeTest,
     typingData,
     letterIndex,
-    keytyped,
-    updateText,
+    resetTest,
     handleActiveTest,
   } = useUserInput();
 
@@ -28,9 +27,9 @@ const TypingText = () => {
     letters.push({ index: i, letter: words[i] });
   }
 
-  const isClient = useClient();
+  const isActiveTest = useTestStore((s) => s.isActiveTest);
 
-  // console.log(keytyped?.key);
+  const isClient = useClient();
 
   // if (!isClient) {
   //   return (
@@ -40,6 +39,7 @@ const TypingText = () => {
   //   );
   // }
   // let i = 0;
+
   const check = (el: number) => {
     if (typingData[el]?.isTyped === true) {
       return "correct";
@@ -52,7 +52,13 @@ const TypingText = () => {
       return "incorrect";
     }
   };
-  // console.log(letterIndex);
+
+  // const setCount = useCountdownStore((s) => s.setCount);
+  // const chosenTime = useCountdownStore(s => s.chosenTime)
+
+  // useEffect(() => {
+  //   setCount(count);
+  // }, [count, setCount]);
 
   return (
     <div>
@@ -68,7 +74,7 @@ const TypingText = () => {
      mt-20
       "
       >
-        {!activeTest && (
+        {!isActiveTest && (
           <div className="flex items-center justify-center gap-2  cursor-pointer absolute top-1/2 translate-y-[-50%] z-10 left-1/2 translate-x-[-50%] text-hover">
             <span>
               <PiCursorFill size="1.2rem" />
@@ -96,13 +102,13 @@ const TypingText = () => {
                     "inline-block",
                     letterIndex === el.index &&
                       "absolute w-[2px] h-7 bg-red-100 animate-[cursor-bip_1.2s_infinite] bottom-0",
-                    !activeTest && "hidden"
+                    !isActiveTest && "hidden"
                   )}
                 ></span>
                 <span
                   className={cn(
                     "opacity-80 z-0",
-                    !activeTest && "blur-md",
+                    !isActiveTest && "blur-md",
                     check(el.index) === "correct" &&
                       "text-hover",
                     check(el.index) === "incorrect" &&
@@ -120,7 +126,7 @@ const TypingText = () => {
       {/* to do active test with enter  */}
       <div
         className="flex justify-center mt-11"
-        onClick={() => updateText()}
+        onClick={() => resetTest()}
       >
         <div className="cursor-pointer hover:bg-tertiary hover:text-hover text-primary p-3 rounded-full hover:rotate-180 duration-100 ease-out delay-200">
           <MdOutlineRestartAlt size="1.7rem" />
