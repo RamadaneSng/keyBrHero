@@ -4,6 +4,7 @@ import { useClient } from "@/hook/useClient";
 import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
 import { useTestStore } from "@/store/TestStore";
+import { useEffect } from "react";
 import { MdOutlineRestartAlt } from "react-icons/md";
 import { PiCursorFill } from "react-icons/pi";
 
@@ -18,6 +19,7 @@ const TypingText = () => {
     typingData,
     letterIndex,
     resetTest,
+    keyTyped,
     handleActiveTest,
   } = useUserInput();
 
@@ -53,12 +55,12 @@ const TypingText = () => {
     }
   };
 
-  // const setCount = useCountdownStore((s) => s.setCount);
-  // const chosenTime = useCountdownStore(s => s.chosenTime)
-
-  // useEffect(() => {
-  //   setCount(count);
-  // }, [count, setCount]);
+  useEffect(() => {
+    if (keyTyped?.key === "Enter") {
+      // handleActiveTest();
+      console.log("ok");
+    }
+  }, [keyTyped?.key, handleActiveTest]);
 
   return (
     <div>

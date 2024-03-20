@@ -2,6 +2,7 @@
 
 import { useUserInput } from "@/hook/useUserInput";
 import { cn } from "@/lib/utils";
+import { useKeyboardStore } from "@/store/KeyboardStore";
 import { useTestStore } from "@/store/TestStore";
 import { useEffect, useState } from "react";
 import { BsFillKeyboardFill } from "react-icons/bs";
@@ -10,7 +11,8 @@ import { useCountdown } from "usehooks-ts";
 
 const Option = () => {
   const [chosenTime, setChosenTime] = useState(30);
-  const [keyboard, setKeyboard] = useState("azerty");
+  const { chosenKeyboard, setChosenKeyboard } =
+    useKeyboardStore();
 
   const { resetTest } = useUserInput();
   const isActiveTest = useTestStore((s) => s.isActiveTest);
@@ -23,9 +25,9 @@ const Option = () => {
     localStorage.setItem("chosenTime", time.toString());
   };
 
-  const handleChosenKeyboard = (keyboard: string) => {
-    setKeyboard(keyboard);
-    localStorage.setItem("keyboard", keyboard);
+  const handleChosenKeyboard = (chosenKeyboard: string) => {
+    setChosenKeyboard(chosenKeyboard);
+    localStorage.setItem("keyboard", chosenKeyboard);
   };
 
   const [
@@ -40,7 +42,7 @@ const Option = () => {
     const time = localStorage.getItem("chosenTime");
     const keyboard = localStorage.getItem("keyboard");
 
-    if (keyboard) setKeyboard(keyboard);
+    if (keyboard) setChosenKeyboard(keyboard);
 
     if (time) {
       setChosenTime(parseInt(time));
@@ -50,7 +52,12 @@ const Option = () => {
     } else {
       resetCountdown();
     }
-  }, [isActiveTest, startCountdown, resetCountdown]);
+  }, [
+    isActiveTest,
+    startCountdown,
+    resetCountdown,
+    setChosenKeyboard,
+  ]);
 
   return (
     <div>
@@ -102,7 +109,8 @@ const Option = () => {
           <span
             className={cn(
               "option text-primary transition-colors duration-300",
-              keyboard === "azerty" && "text-secondary"
+              chosenKeyboard === "azerty" &&
+                "text-secondary"
             )}
             onClick={() => handleChosenKeyboard("azerty")}
           >
@@ -111,7 +119,8 @@ const Option = () => {
           <span
             className={cn(
               "option text-primary transition-colors duration-300",
-              keyboard === "qwerty" && "text-secondary"
+              chosenKeyboard === "qwerty" &&
+                "text-secondary"
             )}
             onClick={() => handleChosenKeyboard("qwerty")}
           >
