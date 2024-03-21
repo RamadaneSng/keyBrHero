@@ -28,6 +28,8 @@ const Keyboard = () => {
     (typeof azerty)[number]
   >(azerty[0]);
 
+  console.log(keyTyped);
+
   useEffect(() => {
     if (chosenKeyboard === "qwerty") {
       setKeyboardData(qwerty[0]);
@@ -55,7 +57,6 @@ const Keyboard = () => {
       <div className="flex justify-center">
         <div className="inline-flex justify-center mt-16 bg-tertiary rounded-xl">
           <div className="border-[12px] rounded-xl border-primary">
-            {/* TO DO: add dots on F anf J  */}
             <ul className="flex justify-between">
               {keyBoardData.firstRow.map(
                 (key: KeyType, index) => (
@@ -66,18 +67,16 @@ const Keyboard = () => {
                       key.firstKey === "Backspace" &&
                         "w-[78px] mr-0",
                       key.firstKey === "~" && "ml-0",
-                      key.firstKey === "²" && "ml-0"
+                      key.firstKey === "²" && "ml-0",
+                      key.seconKey === keyTyped?.key &&
+                        activeKey &&
+                        "bg-hover text-main",
+                      key.firstKey === keyTyped?.key &&
+                        activeKey &&
+                        "bg-hover text-main"
                     )}
                   >
-                    <span
-                      className={cn(
-                        keyTyped?.key ===
-                          key.firstKey.toLowerCase() &&
-                          "block text-blue-400"
-                      )}
-                    >
-                      {key.firstKey}
-                    </span>
+                    <span>{key.firstKey}</span>
                     <div className="flex gap-3">
                       {key.secondKey && (
                         <span className="">

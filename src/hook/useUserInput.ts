@@ -2,7 +2,6 @@ import { allowedCharacter, createText } from "@/lib/utils";
 import { useTestStore } from "@/store/TestStore";
 import { useCallback, useEffect } from "react";
 
-
 export const useUserInput = () => {
   const {
     setIsActiveTest,
@@ -27,6 +26,12 @@ export const useUserInput = () => {
     setLetterIndex(0);
     setIsActiveTest(true);
   }, [setTypingData, setLetterIndex, setIsActiveTest]);
+
+  useEffect(() => {
+    if (keyTyped?.key === "Enter") {
+      handleActiveTest();
+    }
+  }, [keyTyped?.key, handleActiveTest]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

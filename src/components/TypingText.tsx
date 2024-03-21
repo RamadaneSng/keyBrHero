@@ -55,12 +55,6 @@ const TypingText = () => {
     }
   };
 
-  useEffect(() => {
-    if (keyTyped?.key === "Enter") {
-      // handleActiveTest();
-      console.log("ok");
-    }
-  }, [keyTyped?.key, handleActiveTest]);
 
   return (
     <div>
