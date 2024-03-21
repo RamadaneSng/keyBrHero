@@ -7,15 +7,11 @@ import ThemeCard from "./ThemeCard";
 
 const Theme = () => {
   const themeRef = useRef(null);
-
   const setIsOpen = useThemeStore((s) => s.setIsOpen);
 
   useOnClickOutside(themeRef, () => setIsOpen(false));
   return (
-    <div
-      className="w-full h-full fixed top-0 left-0 z-50 overflow-hidden"
-      // ref={themeRef}
-    >
+    <div className="w-full h-full fixed top-0 left-0 z-50 overflow-hidden">
       <div
         className="absolute w-[550px] top-1/2 bg-main left-1/2 z-50 translate-x-[-50%] translate-y-[-50%] border-primary shadow-[0_0_0_.2em] shadow-tertiary rounded-[10px]"
         ref={themeRef}

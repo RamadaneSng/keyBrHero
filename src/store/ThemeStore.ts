@@ -8,6 +8,7 @@ interface ThemeStoreType {
 export const useThemeStore = create<ThemeStoreType>(
   (set) => ({
     isOpen: false,
+
     setIsOpen: (val: boolean) =>
       set({
         isOpen: val,

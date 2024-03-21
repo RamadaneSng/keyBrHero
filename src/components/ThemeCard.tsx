@@ -16,6 +16,7 @@ const ThemeCard = ({
   currentTheme: (typeof themes)[number];
 }) => {
   const [ref, hovering] = useHover();
+
   const setIsOpen = useThemeStore((s) => s.setIsOpen);
 
   const [activedTheme = "", setActivedTheme] =
@@ -36,7 +37,6 @@ const ThemeCard = ({
       onClick={() => changeTheme()}
       onMouseEnter={() => setTheme(currentTheme.label)}
       onMouseLeave={() => setTheme(activedTheme)}
-      // onMouseLeave={() => setTheme(activedTheme)}
     >
       <div className="relative">
         {activedTheme === currentTheme.label && (

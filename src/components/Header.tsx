@@ -1,7 +1,10 @@
 "use client";
 
+import { themes } from "@/config";
+import { useClient } from "@/hook/useClient";
 import { useThemeStore } from "@/store/ThemeStore";
-import { useState } from "react";
+import { useHover } from "@uidotdev/usehooks";
+import { useTheme } from "next-themes";
 import { BsFillKeyboardFill } from "react-icons/bs";
 import { FaInfo } from "react-icons/fa";
 import { MdColorLens } from "react-icons/md";
@@ -9,10 +12,22 @@ import { Icons } from "./Icons";
 import Theme from "./Theme";
 
 const Header = () => {
-  const [showTheme, setShowTheme] = useState(false);
-
   const setIsOpen = useThemeStore((s) => s.setIsOpen);
   const isOpen = useThemeStore((s) => s.isOpen);
+  const [ref, hovering] = useHover();
+  const [themeRef, themeHovering] = useHover();
+  const { theme } = useTheme();
+
+  const isClient = useClient();
+
+  const getCurrenTheme = () => {
+    if (isClient) {
+      const currentTheme = themes.find(
+        (el) => el.label === theme
+      );
+      return currentTheme?.name;
+    }
+  };
 
   return (
     <div className=" flex items-center justify-between py-8">
@@ -23,11 +38,16 @@ const Header = () => {
             KeyBrHero.
           </span>
         </div>
-        <span className="cursor-pointer">
+        <span className="cursor-pointer relative" ref={ref}>
           <BsFillKeyboardFill
             size="2rem"
             className="text-primary hover:text-hover"
           />
+          {hovering && (
+            <span className="absolute inline-block text-white bg-black border-white border w-max p-2 text-xs duration-1000 transition-all">
+              Commencer le test
+            </span>
+          )}
         </span>
       </div>
       <div className="flex items-center gap-5 ">
@@ -38,7 +58,19 @@ const Header = () => {
           <span>
             <MdColorLens />
           </span>
-          <p>{8008}</p>
+          {
+            <p
+              className="text-[1rem] relative"
+              ref={themeRef}
+            >
+              {getCurrenTheme()}
+              {themeHovering && (
+                <span className="absolute inline-block text-white bg-black border-white border w-max p-2 text-xs duration-1000 transition-all bottom-[-30px] left-1/2">
+                  Choisir thème
+                </span>
+              )}
+            </p>
+          }
         </div>
         <span className="cursor-pointer text-primary hover:text-hover">
           <FaInfo size="1.3rem" />

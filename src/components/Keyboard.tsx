@@ -28,25 +28,23 @@ const Keyboard = () => {
     (typeof azerty)[number]
   >(azerty[0]);
 
-  console.log(keyTyped);
-
   useEffect(() => {
     if (chosenKeyboard === "qwerty") {
       setKeyboardData(qwerty[0]);
     } else if (chosenKeyboard === "azerty") {
       setKeyboardData(azerty[0]);
     }
-    const onKeyDown = (e: KeyboardEvent) => {
+    const onKeyDown = () => {
       setActiveKey(true);
     };
-    const onKeyUp = (e: KeyboardEvent) => {
+    const onKeyUp = () => {
       setActiveKey(false);
     };
 
-    window.addEventListener("keypress", (e) =>
-      onKeyDown(e)
+    window.addEventListener("keypress", () =>
+      onKeyDown()
     );
-    window.addEventListener("keyup", (e) => onKeyUp(e));
+    window.addEventListener("keyup", () => onKeyUp());
 
     window.removeEventListener("keypress", onKeyDown);
     window.removeEventListener("keyup", onKeyUp);
